@@ -7,10 +7,16 @@ import {
 } from "lucide-react";
 import heroFields from "@/assets/hero-fields.jpg";
 import farmerPortrait from "@/assets/farmer-portrait.jpg";
+import ourStory from "@/assets/Muhizi.jpeg";
+import beneficiaryGroup from "@/assets/2.jpeg";
+import ricaLogo from "@/assets/RICA-Green-Logo-on-White-Bg-scaled.png";
+import rabLogo from "@/assets/RAB_Logo2.png";
+import aptcLogo from "@/assets/APTC.jpg";
 import maizeFlour from "@/assets/maize-flour.jpg";
 import organicSoil from "@/assets/organic-soil.jpg";
 import seedField from "@/assets/seed-field.jpg";
 import community from "@/assets/community.jpg";
+import agribusiness from "@/assets/agribusiness.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -63,9 +69,6 @@ function Nav() {
       >
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 sm:flex sm:justify-between">
           <a href="#top" className="flex min-w-0 items-center gap-2.5 group">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary to-earth text-primary-foreground font-black">
-              E&B
-            </span>
             <span className="truncate text-sm font-semibold tracking-tight">
               <span className="hidden sm:inline">E&B Seed Co Ltd</span>
               <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
@@ -204,7 +207,7 @@ function Story() {
   ];
 
   return (
-    <section id="story" className="relative py-24 sm:py-32">
+    <section id="story" data-theme="light" className="relative bg-stone-50 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionLabel>Our Story</SectionLabel>
         <h2 className="mt-3 max-w-3xl font-display text-3xl font-black leading-[1.05] tracking-tight sm:text-5xl">
@@ -215,12 +218,12 @@ function Story() {
           <div>
             <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]">
               <img
-                src={farmerPortrait}
-                alt="Farmer partner in a field of certified hybrid maize"
+                src={ourStory}
+                alt="E&B Seed Co team members presenting RHM 1407 certified seeds at an agricultural expo"
                 width={1280}
-                height={1600}
+                height={853}
                 loading="lazy"
-                className="h-[520px] w-full object-cover"
+                className="h-[520px] w-full object-cover object-top"
               />
             </div>
             <p className="mt-5 text-xs uppercase tracking-[0.18em] text-muted-foreground">
@@ -382,7 +385,7 @@ function NetworkSection() {
   ];
 
   return (
-    <section id="network" className="relative py-24 sm:py-32">
+    <section id="network" data-theme="light" className="relative bg-stone-50 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionLabel>The Network</SectionLabel>
         <h2 className="mt-3 max-w-3xl font-display text-3xl font-black leading-[1.05] tracking-tight sm:text-5xl">
@@ -390,8 +393,8 @@ function NetworkSection() {
         </h2>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
-          {/* Network diagram */}
-          <div className="relative aspect-square w-full max-w-[520px] mx-auto">
+          {/* Network diagram — hidden on mobile, visible sm+ */}
+          <div className="relative aspect-square w-full max-w-[520px] mx-auto hidden sm:block">
             <div className="absolute inset-0 rounded-full border border-border" />
             <div className="absolute inset-[12%] rounded-full border border-border" />
             <div className="absolute inset-[26%] rounded-full border border-border" />
@@ -399,30 +402,32 @@ function NetworkSection() {
 
             {/* Center node */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-              <div className="grid h-24 w-24 place-items-center rounded-3xl bg-gradient-to-br from-primary to-earth text-primary-foreground font-black shadow-[var(--shadow-glow)]">
-                E&B
+              <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-primary to-earth text-primary-foreground shadow-[var(--shadow-glow)]">
+                <Recycle
+                  className="h-11 w-11"
+                  style={{ animation: "spin-slow 6s linear infinite" }}
+                />
               </div>
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                Headquarters
+                Circular Flow
               </p>
             </div>
 
             {/* Orbit nodes */}
             {[
-              { top: "8%", left: "50%", label: "472 Farmers" },
-              { top: "50%", left: "92%", label: "15 Districts" },
-              { top: "92%", left: "50%", label: "8 Distributors" },
-              { top: "50%", left: "8%", label: "150 Hectares" },
+              { top: "8%",  left: "50%", value: "472",  unit: "Farmers" },
+              { top: "50%", left: "92%", value: "15",   unit: "Districts" },
+              { top: "92%", left: "50%", value: "8",    unit: "Distributors" },
+              { top: "50%", left: "8%",  value: "150",  unit: "Hectares" },
             ].map((n, i) => (
               <div
                 key={i}
-                className="absolute -translate-x-1/2 -translate-y-1/2"
+                className="absolute -translate-x-1/2 -translate-y-1/2 text-center"
                 style={{ top: n.top, left: n.left }}
               >
-                <div className="glass flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  {n.label}
-                </div>
+                <p className="font-display text-lg font-black leading-none text-foreground">{n.value}</p>
+                <ChevronRight className="mx-auto my-0.5 h-3 w-3 rotate-90 text-primary" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground whitespace-nowrap">{n.unit}</p>
               </div>
             ))}
           </div>
@@ -462,19 +467,28 @@ function NetworkSection() {
 
         <div className="mt-12">
           <p className="mb-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">Beneficiary stories</p>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="aspect-square overflow-hidden rounded-2xl border border-border bg-secondary">
-                <img
-                  src={i % 2 === 0 ? farmerPortrait : community}
-                  alt="Farmer beneficiary portrait"
-                  width={400}
-                  height={400}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 hover:scale-110"
-                />
-              </div>
-            ))}
+          <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]">
+            <img
+              src={beneficiaryGroup}
+              alt="Farmer beneficiary group in Buhabwa Village, Rwanda"
+              width={1280}
+              height={853}
+              loading="lazy"
+              className="h-[380px] w-full object-cover object-center transition duration-700 hover:scale-105"
+            />
+            <div className="px-6 py-6 sm:px-8 sm:py-7">
+              <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-2">Buhabwa Village · Nyagatare District</p>
+              <h3 className="font-display text-xl font-black leading-snug tracking-tight sm:text-2xl text-foreground mb-3">
+                "Before, we were guessing. Now we're growing."
+              </h3>
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base max-w-3xl">
+                This group of smallholder farmers from Buhabwa Village was among the first communities to partner with E&B Seed Co Ltd.
+                Working across fragmented plots averaging just 0.5 hectares each, they struggled with inconsistent yields and post-harvest losses that made it impossible to plan beyond a single season.
+                After joining E&B's farmer support programme — receiving certified hybrid seeds, agronomic training, and access to structured supply chains — their collective maize yield increased by over <span className="font-semibold text-foreground">60% within two seasons</span>.
+                Today, several members have expanded their land under cultivation and are supplying grain to institutional buyers for the first time.
+                For them, it was never just about seeds. It was about having a reliable partner who showed up, season after season.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -491,8 +505,8 @@ function WhyItMatters() {
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative overflow-hidden rounded-3xl border border-border">
             <img
-              src={community}
-              alt="Farming families and field production"
+              src={agribusiness}
+              alt="E&B Seed Co agribusiness operations"
               width={1600}
               height={1024}
               loading="lazy"
@@ -541,16 +555,30 @@ function WhyItMatters() {
 }
 
 /* ---------------- PARTNERSHIPS ---------------- */
+const LOGO_PARTNERS = [
+  { img: rabLogo,  name: "RAB",  full: "Rwanda Agriculture Board" },
+  { img: ricaLogo, name: "RICA", full: "Rwanda Inspectorate & Competition Authority" },
+  { img: aptcLogo, name: "APTC", full: "APTC Partnership" },
+];
+
 function Partnerships() {
-  const partners = [
-    { abbr: "RAB", full: "Rwanda Agriculture & Animal Resources Board" },
-    { abbr: "RICA", full: "Rwanda Inspectorate, Competition & Consumer Protection Authority" },
-    { abbr: "APTC", full: "APTC Partnership" },
-    { abbr: "KOAISORWA", full: "KOAISORWA Cooperative" },
-  ];
+  const track = [...LOGO_PARTNERS, ...LOGO_PARTNERS];
 
   return (
-    <section className="relative border-y border-border bg-[var(--gradient-surface)] py-20">
+    <section data-theme="light" className="relative border-y border-border bg-white py-20">
+      <style>{`
+        @keyframes logo-scroll {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .logo-track {
+          animation: logo-scroll 20s linear infinite;
+        }
+        .logo-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -566,22 +594,63 @@ function Partnerships() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {partners.map((p) => (
-            <div key={p.abbr} className="hover-lift rounded-2xl border border-border bg-card p-6 text-center">
-              <div className="font-display text-3xl font-black tracking-tight text-gradient">{p.abbr}</div>
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{p.full}</p>
-            </div>
-          ))}
+        <div className="relative mt-10 overflow-hidden rounded-2xl border border-border bg-white py-6 [mask-image:linear-gradient(to_right,transparent,black_18%,black_82%,transparent)]">
+          <div className="logo-track flex w-max items-center gap-6">
+            {track.map((p, i) => (
+              <div
+                key={i}
+                className="flex w-52 shrink-0 flex-col items-center gap-3 rounded-xl border border-border/40 bg-white px-6 py-4"
+              >
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  className="h-14 w-auto max-w-[120px] object-contain"
+                />
+                <p className="text-center text-[11px] font-medium leading-tight text-muted-foreground">
+                  {p.full}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+const CONTACT_EMAIL = "ebseedcompany@gmail.com";
+const CONTACT_PHONE = "+250 788 449 457";
+
+const WHATSAPP_NUMBER = "250788449457"; // +250 788 449 457
+
 /* ---------------- CTA ---------------- */
 function CallToAction() {
-  const [submitted, setSubmitted] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const get = (k: string) => (fd.get(k) as string)?.trim();
+
+    const lines = [
+      "Hello E&B Seed Co Ltd 👋",
+      "",
+      `*Name:* ${get("from_name")}`,
+      get("organisation") && `*Organisation:* ${get("organisation")}`,
+      get("reply_to")    && `*Email:* ${get("reply_to")}`,
+      get("interest")    && `*Interest:* ${get("interest")}`,
+      "",
+      "*Message:*",
+      get("message"),
+    ].filter(Boolean).join("\n");
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines)}`,
+      "_blank",
+    );
+    setSent(true);
+    e.currentTarget.reset();
+  };
 
   return (
     <section id="contact" className="relative overflow-hidden bg-background py-24 sm:py-32">
@@ -626,20 +695,22 @@ function CallToAction() {
 
         <form
           id="partner-form"
-          onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+          onSubmit={handleSubmit}
           className="mt-12 rounded-3xl border border-border bg-card p-6 sm:p-10"
         >
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Full name" name="name" />
-            <Field label="Organisation" name="org" />
-            <Field label="Email" name="email" type="email" />
+            <Field label="Full name" name="from_name" required />
+            <Field label="Organisation" name="organisation" />
+            <Field label="Email" name="reply_to" type="email" />
             <Field label="Interest" name="interest" placeholder="Grants · Distribution · Investment" />
             <div className="sm:col-span-2">
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Message
               </label>
               <textarea
+                name="message"
                 rows={4}
+                required
                 className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
                 placeholder="Tell us how you'd like to partner with E&B…"
               />
@@ -647,13 +718,17 @@ function CallToAction() {
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs text-muted-foreground">
-              We typically respond within 2 business days.
+              {sent
+                ? "WhatsApp is opening — your message is pre-filled and ready to send."
+                : "Clicking send will open WhatsApp with your message pre-filled."}
             </p>
             <button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
             >
-              {submitted ? (<><CircleCheck className="h-4 w-4" /> Message received</>) : (<>Send inquiry <ArrowRight className="h-4 w-4" /></>)}
+              {sent
+                ? <><CircleCheck className="h-4 w-4" /> Opened WhatsApp</>
+                : <>Send on WhatsApp <ArrowRight className="h-4 w-4" /></>}
             </button>
           </div>
         </form>
@@ -679,14 +754,14 @@ function CtaCard({ Icon, title, desc, cta, href, tone }: {
   );
 }
 
-function Field({ label, name, type = "text", placeholder }: { label: string; name: string; type?: string; placeholder?: string }) {
+function Field({ label, name, type = "text", placeholder, required }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
   return (
     <div>
       <label htmlFor={name} className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
         {label}
       </label>
       <input
-        id={name} name={name} type={type} placeholder={placeholder}
+        id={name} name={name} type={type} placeholder={placeholder} required={required}
         className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
       />
     </div>
@@ -701,7 +776,6 @@ function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-earth text-primary-foreground font-black">E&B</span>
               <span className="font-semibold tracking-tight">E&B Seed Co Ltd</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
@@ -716,8 +790,8 @@ function Footer() {
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Contact</p>
             <ul className="space-y-2.5 text-sm">
-              <li className="flex items-center gap-2 text-foreground/80"><Mail className="h-4 w-4 text-primary" /> hello@ebseed.rw</li>
-              <li className="flex items-center gap-2 text-foreground/80"><Phone className="h-4 w-4 text-primary" /> +250 788 000 000</li>
+              <li className="flex items-center gap-2 text-foreground/80"><Mail className="h-4 w-4 text-primary" /><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary">{CONTACT_EMAIL}</a></li>
+              <li className="flex items-center gap-2 text-foreground/80"><Phone className="h-4 w-4 text-primary" /><a href={`tel:${CONTACT_PHONE.replace(/\s/g,"")}`} className="hover:text-primary">{CONTACT_PHONE}</a></li>
               <li className="flex items-center gap-2 text-foreground/80"><MapPin className="h-4 w-4 text-primary" /> Kayonza, Rwanda</li>
             </ul>
           </div>
