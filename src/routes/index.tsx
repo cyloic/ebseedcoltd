@@ -403,24 +403,21 @@ function NetworkSection() {
             <div className="absolute inset-[42%] rounded-full border border-primary/40 animate-pulse" />
 
             {/* Center node */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-              <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-primary to-earth text-primary-foreground shadow-[var(--shadow-glow)]">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-primary to-earth text-primary-foreground shadow-[var(--shadow-glow)]">
                 <Recycle
-                  className="h-11 w-11"
+                  className="h-10 w-10"
                   style={{ animation: "spin-slow 6s linear infinite" }}
                 />
               </div>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                Circular Flow
-              </p>
             </div>
 
-            {/* Orbit nodes */}
+            {/* Orbit nodes — positioned on the second inner ring */}
             {[
-              { top: "8%",  left: "50%", value: "472",  unit: "Farmers" },
-              { top: "50%", left: "92%", value: "15",   unit: "Districts" },
-              { top: "92%", left: "50%", value: "8",    unit: "Distributors" },
-              { top: "50%", left: "8%",  value: "150",  unit: "Hectares" },
+              { top: "19%",  left: "50%", value: "472",  unit: "Farmers" },
+              { top: "50%", left: "81%", value: "15",   unit: "Districts" },
+              { top: "81%", left: "50%", value: "8",    unit: "Distributors" },
+              { top: "50%", left: "19%",  value: "150",  unit: "Hectares" },
             ].map((n, i) => (
               <div
                 key={i}
