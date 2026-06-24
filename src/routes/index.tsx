@@ -7,8 +7,9 @@ import {
 } from "lucide-react";
 import heroFields from "@/assets/hero-fields.jpg";
 import farmerPortrait from "@/assets/farmer-portrait.jpg";
-import ourStory from "@/assets/Muhizi.jpeg";
+import ourStory from "@/assets/Family.jpeg";
 import beneficiaryGroup from "@/assets/2.jpeg";
+import founderPhoto from "@/assets/Founder.jpeg";
 import ricaLogo from "@/assets/RICA-Green-Logo-on-White-Bg-scaled.png";
 import rabLogo from "@/assets/RAB_Logo2.png";
 import aptcLogo from "@/assets/APTC.jpg";
@@ -465,28 +466,65 @@ function NetworkSection() {
           ))}
         </div>
 
-        <div className="mt-12">
-          <p className="mb-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">Beneficiary stories</p>
+        {/* Founder spotlight */}
+        <div className="mt-16 grid gap-8 lg:grid-cols-[420px_1fr] lg:items-center lg:gap-14">
+          <div className="overflow-hidden rounded-3xl border border-border shadow-[var(--shadow-card)]">
+            <img
+              src={founderPhoto}
+              alt="Mrs. Mugeni Beathe, Founder & CEO of E&B Seed Co Ltd, in the field"
+              width={840}
+              height={1120}
+              loading="lazy"
+              className="h-[480px] w-full object-cover object-top"
+            />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary">Meet the Founder</p>
+            <h3 className="mt-3 font-display text-2xl font-black leading-snug tracking-tight sm:text-3xl">
+              Mrs. Mugeni Beathe<br />
+              <span className="text-gradient-earth">Founder & CEO</span>
+            </h3>
+            <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p>
+                An experienced agribusiness entrepreneur and community leader, Mrs. Mugeni Beathe built
+                E&B Seed Co Ltd on a single conviction: that access to quality seed is the foundation of
+                food security. Her hands-on approach — walking fields, sitting with farmers, understanding
+                the soil — has shaped every decision the company makes.
+              </p>
+              <p className="border-l-2 border-primary pl-5 italic text-foreground/90">
+                "My vision has always been simple — lift farmers, lift communities. When a farmer thrives,
+                everyone around them thrives too."
+              </p>
+              <p>
+                Under her leadership, E&B has grown from a family plot to a certified enterprise spanning
+                150 hectares, supporting 472 farming families, and creating employment across 15 districts —
+                while staying rooted in the values of social responsibility and rural development.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <p className="mb-4 text-xs uppercase tracking-[0.18em] text-muted-foreground text-center">Community impact</p>
           <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]">
             <img
               src={beneficiaryGroup}
-              alt="Farmer beneficiary group in Buhabwa Village, Rwanda"
+              alt="Community members and E&B representatives at a house handover event"
               width={1280}
               height={853}
               loading="lazy"
               className="h-[380px] w-full object-cover object-center transition duration-700 hover:scale-105"
             />
-            <div className="px-6 py-6 sm:px-8 sm:py-7">
-              <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-2">Buhabwa Village · Nyagatare District</p>
-              <h3 className="font-display text-xl font-black leading-snug tracking-tight sm:text-2xl text-foreground mb-3">
-                "Before, we were guessing. Now we're growing."
+            <div className="px-6 py-8 sm:px-12 sm:py-10 text-center">
+              <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">Corporate Social Responsibility</p>
+              <h3 className="font-display text-xl font-black leading-snug tracking-tight sm:text-2xl text-foreground mb-4">
+                Building more than a business — building homes.
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base max-w-3xl">
-                This group of smallholder farmers from Buhabwa Village was among the first communities to partner with E&B Seed Co Ltd.
-                Working across fragmented plots averaging just 0.5 hectares each, they struggled with inconsistent yields and post-harvest losses that made it impossible to plan beyond a single season.
-                After joining E&B's farmer support programme — receiving certified hybrid seeds, agronomic training, and access to structured supply chains — their collective maize yield increased by over <span className="font-semibold text-foreground">60% within two seasons</span>.
-                Today, several members have expanded their land under cultivation and are supplying grain to institutional buyers for the first time.
-                For them, it was never just about seeds. It was about having a reliable partner who showed up, season after season.
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base max-w-2xl mx-auto">
+                As part of its CSR commitment, E&B Seed Co Ltd supported the construction of a home for a vulnerable neighbour
+                who previously had no proper shelter. The handover, attended by community members and company representatives,
+                was a moment that captured what E&B stands for beyond the fields —{" "}
+                <span className="font-semibold text-foreground">compassion, dignity, and sustainable community development.</span>
               </p>
             </div>
           </div>
