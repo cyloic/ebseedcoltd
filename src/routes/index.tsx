@@ -28,6 +28,7 @@ const NAV = [
   { label: "What We Do", href: "#impact" },
   { label: "Our Impact", href: "#network" },
   { label: "Why We're Different", href: "#why" },
+  { label: "Infrastructure", href: "/infrastructure" },
   { label: "Contact", href: "#contact" },
 ];
 
